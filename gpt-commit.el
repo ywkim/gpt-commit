@@ -1,5 +1,10 @@
 ;;; gpt-commit.el --- GPT Conventional Commit Title -*- lexical-binding: t; -*-
 
+;; Author: Youngwook Kim <youngwook.kim@gmail.com>
+;; URL: https://github.com/ywkim/gpt-commit
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "24.4"))
+
 ;;; Commentary:
 ;;
 ;; A hook using GPT
@@ -66,9 +71,6 @@ A BREAKING CHANGE can be part of commits of any _type_.
 Additional types are not mandated by the Conventional Commits specification, and have no implicit effect in Semantic Versioning (unless they include a BREAKING CHANGE).
 <br /><br />
 A scope may be provided to a commit's type, to provide additional contextual information and is contained within parenthesis, e.g., `feat(parser): add ability to parse arrays`.")
-
-(defconst gpt-commit-system-prompt-ko
-  "사용자는 `git diff --cached`의 실행 결과를 제공합니다. 당신은 conventional commit message를 제안합니다. 다음은 conventional commits에 대한 설명입니다.")
 
 (defun gpt-commit-parse-response (data)
   "Parse the GPT response DATA."
