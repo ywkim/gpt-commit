@@ -81,7 +81,7 @@ A scope may be provided to a commit's type, to provide additional contextual inf
     (decode-coding-string content 'utf-8)))
 
 (defun gpt-commit-openai-chat-completions-api (messages callback)
-  "Call OpenAI's Chat Completions API with MESSAGES and return the response."
+  "Call OpenAI's Chat Completions API with MESSAGES and CALLBACK."
   (let* ((headers `(("Content-Type" . "application/json")
                     ("Authorization" . ,(concat "Bearer " gpt-commit-openai-key))))
          (json-string (json-serialize `((model . ,gpt-commit-model-name)
@@ -103,6 +103,7 @@ A scope may be provided to a commit's type, to provide additional contextual inf
                 (message "Error: %s %s" error-thrown data))))))
 
 (defun gpt-commit-generate-message (callback)
+  "Generate a commit message using GPT and pass it to the CALLBACK."
   (let* ((lines (magit-git-lines "diff" "--cached"))
          (changes (string-join lines "\n"))
          (messages `[((role . "system")
