@@ -3,7 +3,7 @@
 ;; Author: Youngwook Kim <youngwook.kim@gmail.com>
 ;; URL: https://github.com/ywkim/gpt-commit
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "24.4"))
+;; Package-Requires: ((emacs "27.1") (magit "2.90") (request "0.3.2"))
 
 ;;; Commentary:
 ;;
@@ -25,7 +25,7 @@
 (defvar gpt-commit-model-name "gpt-3.5-turbo"
   "Model name to use for GPT chat completions.")
 
-(defconst gpt-api-url "https://api.openai.com/v1/chat/completions"
+(defconst gpt-commit-api-url "https://api.openai.com/v1/chat/completions"
   "API endpoint for GPT chat completions.")
 
 
@@ -87,7 +87,7 @@ A scope may be provided to a commit's type, to provide additional contextual inf
          (json-string (json-serialize `((model . ,gpt-commit-model-name)
                                         (messages . ,messages))))
          (payload (encode-coding-string json-string 'utf-8)))
-    (request gpt-api-url
+    (request gpt-commit-api-url
              :type "POST"
              :headers headers
              :data payload
