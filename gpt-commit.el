@@ -1,8 +1,8 @@
-;;; gpt-commit.el --- GPT Conventional Commit Title -*- lexical-binding: t; -*-
+;;; gpt-commit.el --- Commit messages with GPT in Emacs -*- lexical-binding: t; -*-
 
 ;; Author: Youngwook Kim <youngwook.kim@gmail.com>
 ;; URL: https://github.com/ywkim/gpt-commit
-;; Version: 0.0.1
+;; Package-Version: 0.0.2
 ;; Package-Requires: ((emacs "27.1") (magit "2.90") (request "0.3.2"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
@@ -22,7 +22,26 @@
 
 ;;; Commentary:
 ;;
-;; A hook using GPT
+;; GPT-Commit is an Emacs package that automates the generation of
+;; conventional commit messages.  By leveraging the power of GPT
+;; (Generative Pre-trained Transformer) models, it suggests structured
+;; commit messages following the conventional commit format.
+;;
+;; With GPT-Commit, you no longer need to spend time crafting commit
+;; messages manually.  It analyzes the changes in your Git repository and
+;; generates meaningful commit messages automatically, ensuring
+;; consistent and descriptive commit logs.
+;;
+;; Features:
+;; - Automatic generation of conventional commit messages
+;; - Integration with Git and Magit for seamless workflow
+;; - Easy configuration and customization
+;;
+;; GPT-Commit streamlines the commit process and promotes best practices
+;; for commit message formatting.  By using consistent commit messages,
+;; you can enhance project clarity, facilitate collaboration, and improve
+;; the overall maintainability of your codebase.
+;;
 ;; (require 'gpt-commit)
 ;; (setq gpt-commit-openai-key "YOUR_OPENAI_API_KEY")
 ;; (setq gpt-commit-model-name "gpt-3.5-turbo-16k")
@@ -128,7 +147,26 @@ A scope may be provided to a commit's type, to provide additional contextual inf
     (gpt-commit-openai-chat-completions-api messages callback)))
 
 (defun gpt-commit-message ()
-  "Automatically generate a commit message using GPT."
+  "Automatically generate a conventional commit message using GPT-Commit.
+
+This function is a hook intended to be added to `git-commit-setup-hook'.
+When called, it analyzes the changes in the Git repository and generates
+a conventional commit message using the GPT model.
+
+The generated commit message follows the conventional commit format,
+providing a structured description of the changes made in the commit.
+
+To use this feature, make sure you have set the OpenAI API key and
+GPT model name in the respective variables:
+- `gpt-commit-openai-key'
+- `gpt-commit-model-name'
+
+Example usage:
+  (require 'gpt-commit)
+  (setq gpt-commit-openai-key \"YOUR_OPENAI_API_KEY\")
+  (setq gpt-commit-model-name \"gpt-3.5-turbo-16k\")
+  (add-hook 'git-commit-setup-hook 'gpt-commit-message)"
+
   (interactive)
   (let ((buffer (current-buffer)))
     (gpt-commit-generate-message
