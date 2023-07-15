@@ -168,11 +168,12 @@ Example usage:
   (add-hook 'git-commit-setup-hook 'gpt-commit-message)"
 
   (interactive)
-  (let ((buffer (current-buffer)))
-    (gpt-commit-generate-message
-     (lambda (commit-message)
-       (when commit-message
-         (with-current-buffer buffer
-           (insert commit-message)))))))
+  (unless (git-commit-buffer-message)
+    (let ((buffer (current-buffer)))
+      (gpt-commit-generate-message
+       (lambda (commit-message)
+	 (when commit-message
+           (with-current-buffer buffer
+             (insert commit-message))))))))
 
 ;;; gpt-commit.el ends here
