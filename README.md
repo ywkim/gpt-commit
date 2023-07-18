@@ -9,6 +9,9 @@ GPT-Commit is an Emacs package that automatically generates conventional commit 
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Examples](#examples)
+- [Benefits](#benefits)
+- [Feedback](#feedback)
 - [License](#license)
 
 ## Installation
@@ -56,6 +59,30 @@ To install this package manually, clone this repository and add the following to
 Once you have configured `gpt-commit`, it will automatically generate a commit message using the GPT model whenever you perform a Git commit. You can accept the message by saving and closing the editor, or you can modify the message as needed.
 
 Please note that using the OpenAI API might incur costs, and there might be usage limitations. Be aware of the [OpenAI pricing and policy](https://openai.com/pricing) before extensive use.
+
+## Examples
+
+In our [blog post](https://ywkim.github.io/gpt-commit-real-world-examples-benefits/), we've shared real-world examples of how GPT-Commit works with different types of commits. These examples are based on actual commits from the [Angular project](https://github.com/angular/angular). Here's a quick overview:
+
+- **Documentation Updates**: GPT-Commit accurately identifies that the commit is related to documentation updates and provides more specific information about the update in the commit message.
+- **Bug Fixes**: GPT-Commit identifies a bug fix and provides a clear description of the fix in the commit message.
+- **Feature Addition**: GPT-Commit correctly identifies the change as a feature addition and provides a clear description of the new feature in the commit message.
+- **Dependency Update**: GPT-Commit correctly identifies a dependency update and specifies the packages and version number in the commit message.
+- **GitHub Action Update**: GPT-Commit accurately recognizes the commit as a CI configuration update and provides a clear description of the update in the commit message.
+
+For more detailed examples and comparisons with original commit messages, please check out the [blog post](https://ywkim.github.io/gpt-commit-real-world-examples-benefits/).
+
+## Benefits
+
+GPT-Commit offers several benefits to developers:
+
+- **Time-saving**: GPT-Commit automates the task of writing commit messages, saving developers' time.
+- **Consistency**: GPT-Commit generates commit messages in a consistent format, making the commit history easier to read and understand.
+- **Focus on coding**: With GPT-Commit taking care of commit messages, developers can focus more on coding.
+
+## Feedback
+
+We're always looking to improve GPT-Commit and we'd love to hear your thoughts. If you've used GPT-Commit, please share your experiences. If you haven't, we encourage you to give it a try and let us know what you think. You can provide feedback by creating an issue in our [GitHub repository](https://github.com/ywkim/gpt-commit).
 
 ## License
 
