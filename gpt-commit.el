@@ -63,7 +63,7 @@
   "API endpoint for GPT chat completions.")
 
 
-(defconst gpt-commit-system-prompt-en
+(defvar gpt-commit-system-prompt-en
   "The user provides the result of running `git diff --cached`. You suggest a conventional commit message. Don't add anything else to the response. The following describes conventional commits.
 
 # Conventional Commits 1.0.0
